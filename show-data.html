@@ -3,32 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Stack Underflow - Show Data</title>
+    <!-- Your existing styles -->
     <style>
-        .toolbar {
-            background-color: white;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-        }
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.5rem;
-            text-align: left;
-        }
-        th {
-            background-color: #f5f5f5;
-        }
+        /* ... keep all your existing CSS ... */
     </style>
 </head>
 <body>
@@ -39,15 +16,29 @@
     </div>
     <div class="content">
         <h1>Data Display</h1>
-        <table>
+        <table id="dataTable">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Info</th>
                 <th>Created At</th>
             </tr>
-            <!-- Data would be displayed here in the original Flask version -->
         </table>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedData = JSON.parse(localStorage.getItem('stackUnderflowData') || '[]');
+            
+            const table = document.getElementById('dataTable');
+            storedData.forEach(item => {
+                const row = table.insertRow(-1);
+                row.insertCell(0).textContent = item.id;
+                row.insertCell(1).textContent = item.name;
+                row.insertCell(2).textContent = item.info;
+                row.insertCell(3).textContent = new Date(item.createdAt).toLocaleString();
+            });
+        });
+    </script>
 </body>
 </html>
