@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <title>Stack Underflow - Enter Data</title>
         <style>
@@ -65,8 +66,6 @@
     </div>
 
     <script>
-        
-        import { createClient } from '@supabase/supabase-js'
         const supabaseUrl = 'https://yaivazodcblqomehamio.supabase.co'
         const supabaseKey = process.env.SUPABASE_KEY
         const supabase = createClient(supabaseUrl, supabaseKey)
