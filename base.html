@@ -1,3 +1,4 @@
+<!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,39 +6,31 @@
     <meta charset="UTF-8">
     <title>Stack Underflow</title>
     <style>
-        base{
-            font-color: black;
-        }
         .toolbar {
-    background-color: white;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-}
+            background-color: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+        }
 
-.toolbar img {
-    height: 40px; /* Adjust based on your actual logo size */
-    margin-right: 1rem;
-}
+        .toolbar img {
+            height: 40px;
+            margin-right: 1rem;
+        }
 
-.toolbar a {
-    color: black;
-    text-decoration: none;
-    margin-right: 1rem;
-    font-size: 1.2rem;
-}
-
-.content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
     </style>
 </head>
 <body>
     <div class="toolbar">
-        <img src="{{ url_for('static', filename='stackunderflow.png') }}" alt="logo">
+        {% if 'stackunderflow.png' | filename_filter %}
+            <img src="{{ url_for('static', filename='stackunderflow.png') }}" alt="logo">
+        {% endif %}
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('data_enter') }}">Enter Data</a>
         <a href="{{ url_for('show_data') }}">Show Data</a>
